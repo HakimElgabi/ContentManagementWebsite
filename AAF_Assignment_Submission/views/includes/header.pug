@@ -1,0 +1,14 @@
+ul
+  li
+    a(href='/TMS') Home
+  li
+    a(href='/TMS/files/Image', id='images') Current Graphics Projects
+  li
+    a(href='/TMS/files/Video', id='videos') Current Video Projects
+  //- li
+  //-   a(href='/files') Video Files
+  //- if (res.locals.session)
+  li(style='float:right')
+    a.active(href='/TMS/signout') Sign Out
+  li(style='float:right')
+    a(href='/TMS') #{user.user_name}

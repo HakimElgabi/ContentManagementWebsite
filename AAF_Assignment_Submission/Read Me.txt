@@ -1,0 +1,7 @@
+In order to get the node modules use npm install
+
+In order to repopulate the database create a dbs called assignment, then run this statement to create the user collection:
+
+db.users.insertMany([{'user_name':'Hakim', 'password':'Hello123', 'team':'Team 1'}, {'user_name':'Steven', 'password':'Hello123', 'team':'Team 2'}, {'user_name':'Felix', 'password':'Hello123', 'team':'Team 3'}, {'user_name':'John', 'password':'Hello123', 'team':'Team 1'}])
+
+The application should be able to automatically create all the other collections by itself

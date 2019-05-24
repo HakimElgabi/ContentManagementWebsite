@@ -1,0 +1,49 @@
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    link(rel='stylesheet', href='/stylesheets/newVersionTable.css')
+
+include includes/header
+block content
+    table.container
+        h1 '#{title}' Version Control
+        thead
+            tr
+            th
+                form(action='/TMS/files/Image/'+title+'/newVersion', id='newVersion', method='get')
+                //- input(type="hidden", id='filename', name='filename', value= title)
+                button(style='float:right', type='submit', id ='edit', form='newVersion', value='submit') Edit
+            th 
+            th
+            th
+            th
+            th
+                form(action='/TMS/files/Image/confirmDelete/'+title, id='deleteFile', method='get')
+                button(style='float:right', type='submit', form='deleteFile', id ='delete',
+                value='submit') Delete
+            tr
+            th
+                h1 Version
+            th
+                h1 Author        
+            th
+                h1 Date
+            th 
+                h1 Time
+            th
+                h1 Resolution
+            th
+                h1 File Format
+            //- th 
+            //-     a(href='/newFile')
+            //-         h1 New Version
+        tbody
+            each imageFile in imagefiles
+                tr
+                    td Version #{imageFile.file_version}
+                    td #{imageFile.author}
+                    td #{imageFile.created_at}
+                    td #{imageFile.time}
+                    td #{imageFile.resolution}
+                    td #{imageFile.file_format}

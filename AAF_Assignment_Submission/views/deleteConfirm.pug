@@ -1,0 +1,18 @@
+html
+  head
+    title= "Delete " + title 
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    link(rel='stylesheet', href='/stylesheets/signin.css')
+    link(rel='stylesheet', href='/stylesheets/alerts.css')
+
+block content
+  include includes/flash
+  include includes/header
+
+  h1= "Are you sure you wish to delete " + "'"+ title + "'?"
+  .login-page
+    .form
+        form(action='/TMS/files/'+ file.file_type + '/delete/' + title, id='checkSignIn', method='get')
+                button(type='submit', id='yes', value='Submit') Yes
+        form(action='/TMS/files/'+ file.file_type + '/' + title, id='checkSignIn', method='get')
+            button(type='submit', id='no', value='Submit') No

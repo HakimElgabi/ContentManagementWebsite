@@ -1,0 +1,56 @@
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    link(rel='stylesheet', href='/stylesheets/table.css')
+    link(rel='stylesheet', href='/stylesheets/alerts.css')
+
+include includes/header
+include includes/flash
+
+block content
+    table.container
+        .search-container
+            form(action='/TMS/files/' search, method='get')
+                //- input(type='hidden', name='filetype', id='')
+                input(type='text', placeholder='Search..', name='search', id='search')
+                button(type='submit', id='submit')
+                    i.fa.fa-search
+        h1= title + ' Projects'
+        thead
+            tr
+            th
+                h1 Project Name
+            th
+                h1 Original Author        
+            th
+                h1 Creation Date
+            th
+                h1 Last Edited
+            th
+                h1 Time
+            th
+                h1 Team
+            if(title == "Image")
+                th.last
+                    a(href='/TMS/newFile')
+                        h1 New Project
+            if(title == "Video")
+                th.last
+                    a(href='/TMS/newVideoFile')
+                        h1 New Project
+        tbody
+            each fileheader in fileheaders
+                tr
+                    td #{fileheader.file_name}
+                    td #{fileheader.author}
+                    td #{fileheader.created_at}
+                    td #{fileheader.last_edited}
+                    td #{fileheader.time}
+                    td #{fileheader.team}
+                    td 
+                            //- a(href='/files/'+ fileheader.file_type + '/' + fileheader.file_name) Repository
+                            if(fileheader.accessible==true)
+                                a(href='/TMS/files/'+ fileheader.file_type + '/' + fileheader.file_name, id = fileheader.file_name) Repository
+                            if (fileheader.accessible==false)
+                                a Not Available

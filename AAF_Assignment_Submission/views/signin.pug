@@ -1,0 +1,15 @@
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    link(rel='stylesheet', href='/stylesheets/signin.css')
+    link(rel='stylesheet', href='/stylesheets/alerts.css')
+
+block content
+  include includes/flash
+  .login-page
+    .form
+      form(action='/TMS/checkSignIn', id='checkSignIn', method='post')
+        input(type='text', name='username', id='username', required='true', placeholder='username')
+        input(type='password', name='password', id='password', required='true', placeholder='password')
+        button(type='submit', id='submit' form='checkSignIn', value='Submit') Sign In

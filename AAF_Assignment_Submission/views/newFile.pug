@@ -1,0 +1,30 @@
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    link(rel='stylesheet', href='/stylesheets/table.css')
+    link(rel='stylesheet', href='/stylesheets/form.css')
+
+include includes/header
+
+block content
+  h1 Start New Image Project
+  .container
+    form(action='/TMS/newImage', id='newImage', method='post')
+      label(for='file_name') Project Name
+      input(type='text', name='file_name', required='true', id='file_name', placeholder='Project Name..')
+      label(for='resolution') Resolution
+      select(name='resolution', id='resolution', placeholder='Resolution..')
+        option(value='1280 x 720') 1280 x 720
+        option(value='1920 x 1080') 1920 x 1080
+        option(value='2048 x 1080') 2048 x 1080
+        option(value='3840 x 2160') 3840 x 2160
+      label(for='file_format') File Format
+      select(name='file_format', id='file_format')
+        option(value='JPEG') JPEG
+        option(value='PNG') PNG
+        option(value='PDF') PDF
+        option(value='PDF') GIF
+      label(for='tags') Tags
+      input(type='text', name='tags', id='tags', placeholder='Tags..')
+      input(type='submit', form='newImage', value='Submit', id='submit')

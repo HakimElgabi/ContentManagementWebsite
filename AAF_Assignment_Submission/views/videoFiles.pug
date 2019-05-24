@@ -1,0 +1,50 @@
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    link(rel='stylesheet', href='/stylesheets/newVersionTable.css')
+
+include includes/header
+block content
+    table.container
+        h1 '#{title}' Version Control
+        thead
+            tr
+            th
+                form(action='/TMS/files/Video/'+title+'/newVersion', id='newVersion', method='get')
+                button(style='float:right', type='submit', form='newVersion',
+                value='submit') Edit
+            th 
+            th
+            th
+            th
+            th
+            th
+                form(action='/TMS/files/Video/confirmDelete/'+title, id='deleteFile', method='get')
+                button(style='float:right', type='submit', form='deleteFile',
+                value='submit') Delete
+            tr
+            th
+                h1 Version
+            th
+                h1 Author        
+            th
+                h1 Date
+            th 
+                h1 Time
+            th
+                h1 Length
+            th
+                h1 Resolution
+            th
+                h1 File Format
+        tbody
+            each videoFile in videofiles
+                tr
+                    td Version #{videoFile.file_version}
+                    td #{videoFile.author}
+                    td #{videoFile.created_at}
+                    td #{videoFile.time}
+                    td #{videoFile.length} Minute(s)
+                    td #{videoFile.resolution}
+                    td #{videoFile.file_format}
